@@ -1,0 +1,30 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+.header {
+  position: relative;
+  align-self: center;
+  justify-self: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: normal;
+  width: fit-content;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+
+  color: antiquewhite;
+  font-weight: 300;
+
+  font-size: 2rem;
+}
+
+.header .hello > span {
+  color: aquamarine;
+  font-weight: 600;
+}
