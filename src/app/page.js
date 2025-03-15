@@ -1,14 +1,22 @@
-import "./styles.css";
+import ParticlesComponent from "./components/Particles/Particles";
+import "./page.css";
 
 export default function Home() {
   return (
-    <div className="wrapper">
-      <div className="header">
-        <div className="hello">
-          Hello, I'm <span>Chris</span>.
+    <>
+
+      <main>
+        <ParticlesComponent id="tsparticles" />
+        <div className="wrapper">
+          <div className="header">
+            <div className="hello">
+              Hello, I&apos;m <span>Chris</span>.
+              <span className="wave">👋</span>
+            </div>
+            <div className="prof">I&apos;m a Software Engineer.</div>
+          </div>
         </div>
-        <div className="prof">I'm a Software Engineer.</div>
-      </div>
-    </div>
+      </main>
+    </>
   );
 }
