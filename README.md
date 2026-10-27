@@ -51,9 +51,10 @@ Alternatively, run `docker compose up --build` and open [localhost:3000](http://
 
 - `src/app/page.js` — introduction, about, technology lists, work status, and contact links.
 - `src/app/components/Particles/Particles.js` — particle drawing, pointer interaction, and animation controls.
+- `src/app/brand.css` — local BST header styles, matched with BST Tools until a shared UI package is released.
 - `src/app/globals.css` — colors, typography, responsive layout, logo framing, and reduced-motion styles.
 - `src/app/layout.js` — page title, description, social metadata, and favicon.
-- `public/BST.jpg` — original BST logo; CSS frames it in the header without changing the image file.
+- `public/BST.jpg` — BST logo, framed by CSS in the header.
 - `cloudflare/worker.mjs` — routes `/tools/*` through the toolkit service binding.
 - `wrangler.json` — Cloudflare Worker, asset, custom-domain, and service-binding configuration.
 - `next.config.mjs` — static export, unoptimized images, and development build directory.
@@ -85,3 +86,7 @@ Suggested repository details:
 - **Topics:** `portfolio`, `personal-website`, `nextjs`, `react`, `tailwindcss`, `github-pages`
 
 Set these through the gear icon beside **About** on the repository homepage, or with GitHub CLI/API access. They only need updating when the repository’s purpose, site URL, or technologies change.
+
+## Shared UI package status
+
+The separate local `bst-ui` repository is retained for a future package release. This app does not depend on `@bst/ui`, a local tarball, or a sibling checkout. Header markup, `src/app/brand.css`, and `public/BST.jpg` are local for now; keep them aligned with BST Tools until the shared package is released and adopted.

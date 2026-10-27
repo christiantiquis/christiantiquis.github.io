@@ -1,0 +1,61 @@
+/* Matching BST header styles. Keep app copies in sync until the UI package is released. */
+.brand-header {
+  --brand-bg: #0b1015;
+  --brand-text: #eef2f5;
+  --brand-muted: #a2aeb9;
+  --brand-accent: #9cf3d0;
+  width: min(1160px, calc(100% - 96px));
+  margin-inline: auto;
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  border-bottom: 1px solid #ffffff12;
+  background: var(--brand-bg);
+  color: var(--brand-text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.brand-header-shell { background: #0b1015; }
+.brand-home {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: 94px;
+  height: 74px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.brand-logo-image {
+  position: absolute;
+  width: 150px;
+  max-width: none;
+  height: auto;
+  left: -28px;
+  top: -39px;
+}
+.brand-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+.brand-nav a { color: var(--brand-muted); text-decoration: none; white-space: nowrap; }
+.brand-nav a:hover, .brand-nav a[aria-current="page"] { color: var(--brand-accent); }
+.brand-nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 1px; }
+.brand-nav .brand-contact { color: var(--brand-text); }
+.brand-contact span { color: var(--brand-accent); margin-left: 10px; }
+.brand-header a:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 6px; }
+@media (max-width: 1000px) {
+  .brand-header { width: calc(100% - 64px); }
+  .brand-nav { gap: 24px; }
+}
+@media (max-width: 720px) {
+  .brand-header { width: calc(100% - 40px); min-height: 84px; padding-block: 12px; flex-wrap: wrap; gap: 12px; }
+  .brand-home { width: 76px; height: 60px; }
+  .brand-logo-image { width: 121px; left: -23px; top: -32px; }
+  .brand-nav { width: 100%; justify-content: space-between; gap: 12px; font-size: 12px; }
+  .brand-nav .brand-contact { display: none; }
+}

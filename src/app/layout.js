@@ -1,4 +1,5 @@
 import "./globals.css";
+import "./brand.css";
 import { siteUrl } from "./site";
 
 export const metadata = {

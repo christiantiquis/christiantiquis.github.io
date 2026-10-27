@@ -11,13 +11,13 @@ export default function Home() {
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
-      <header className="site-header container">
-        <a className="wordmark" href="#" aria-label="Chris — BST home">
-          <Image className="brand-logo" src="/BST.jpg" alt="BST" width={999} height={1009} unoptimized />
+      <header className="brand-header">
+        <a className="brand-home" href="#" aria-label="Chris — BST home">
+          <Image className="brand-logo-image" src="/BST.jpg" alt="BST" width={999} height={1009} unoptimized />
         </a>
-        <nav aria-label="Main navigation">
+        <nav className="brand-nav" aria-label="Main navigation">
           <a href="#about">About</a><a href="#stack">Stack</a><a href="#work">Work</a><a href="/tools/">Tools</a>
-          <a className="nav-contact" href="#contact">Let&apos;s connect <span aria-hidden="true">↗</span></a>
+          <a className="brand-contact" href="#contact">Let&apos;s connect <span aria-hidden="true">↗</span></a>
         </nav>
       </header>
       <main id="main">

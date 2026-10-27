@@ -47,31 +47,9 @@ a:focus-visible {
 .skip-link:focus {
   top: 16px;
 }
-.site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 110px;
-  border-bottom: 1px solid #ffffff12;
-}
-.wordmark {
-  display: block;
-  position: relative;
-  flex-shrink: 0;
-  width: 94px;
-  height: 74px;
-  overflow: hidden;
-  border-radius: 5px;
-}
-.brand-logo {
-  /* Frame the artwork, leaving the original image file intact. */
-  position: absolute;
-  width: 150px;
-  max-width: none;
-  height: auto;
-  left: -28px;
-  top: -39px;
-}
+
+
+
 nav {
   display: flex;
   align-items: center;
@@ -84,13 +62,8 @@ nav a {
 nav a:hover, .text-link:hover, footer a:hover {
   color: var(--accent);
 }
-nav .nav-contact {
-  color: var(--foreground);
-}
-.nav-contact span {
-  margin-left: 10px;
-  color: var(--accent);
-}
+
+
 .hero {
   min-height: 740px;
   display: grid;
@@ -456,17 +429,13 @@ h3 {
   .container {
     width: calc(100% - 40px);
   }
-  .site-header {
-    min-height: 84px;
-  }
-  nav {
+
+nav {
     gap: 18px;
     font-size: 12px;
   }
-  nav .nav-contact {
-    display: none;
-  }
-  .hero {
+
+.hero {
     grid-template-columns: 1fr;
     padding-block: 60px 80px;
     min-height: auto;
