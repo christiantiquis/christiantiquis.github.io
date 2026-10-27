@@ -1,4 +1,10 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+import { PHASE_DEVELOPMENT_SERVER } from "next/constants.js";
 
-export default nextConfig;
+/** @type {import('next').NextConfig} */
+export default function nextConfig(phase) {
+  return {
+    output: "export",
+    // Keep the development cache separate from production builds.
+    distDir: phase === PHASE_DEVELOPMENT_SERVER ? ".next/dev" : ".next",
+  };
+}
