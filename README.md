@@ -2,7 +2,7 @@
 
 Personal portfolio of **Christian (Chris) Tiquis**, a software engineer and full-stack developer working with TypeScript, React, Java, and Spring Boot. **BST** is my personal brand and username; **Chris** is the name I go by.
 
-[Portfolio](https://christiantiquis.github.io) · [GitHub profile](https://github.com/christiantiquis) · [LinkedIn](https://www.linkedin.com/in/christiantiquis/)
+[Portfolio](https://christiquis.pw) · [GitHub profile](https://github.com/christiantiquis) · [LinkedIn](https://www.linkedin.com/in/christiantiquis/)
 
 ## What’s included
 
@@ -12,7 +12,7 @@ Personal portfolio of **Christian (Chris) Tiquis**, a software engineer and full
 - A pause/resume control, reduced-motion support, and animation that pauses offscreen or in hidden tabs.
 - Page metadata and a static export for GitHub Pages.
 
-The Work section currently explains that public projects are being prepared. Add real project descriptions, source links, and demos as they become available.
+The Work section features **BST Tools**, a separate browser-only toolkit served under [/tools/](https://christiquis.pw/tools/). Chris is the person behind both sites; BST is the shared personal/product brand.
 
 ## Stack
 
@@ -33,6 +33,7 @@ Open [localhost:3000](http://localhost:3000). Next.js prints another port if 300
 
 ```sh
 npm run lint
+npm run test:cloudflare
 npm run build
 ```
 
@@ -53,17 +54,25 @@ Alternatively, run `docker compose up --build` and open [localhost:3000](http://
 - `src/app/globals.css` — colors, typography, responsive layout, logo framing, and reduced-motion styles.
 - `src/app/layout.js` — page title, description, social metadata, and favicon.
 - `public/BST.jpg` — original BST logo; CSS frames it in the header without changing the image file.
+- `cloudflare/worker.mjs` — routes `/tools/*` through the toolkit service binding.
+- `wrangler.json` — Cloudflare Worker, asset, custom-domain, and service-binding configuration.
 - `next.config.mjs` — static export, unoptimized images, and development build directory.
 
 Profile content was adapted from the README in the [christiantiquis profile repository](https://github.com/christiantiquis/christiantiquis). The two repositories do not sync automatically; update both when your stack, availability, or project details change.
 
-## GitHub Pages deployment
+## Cloudflare deployment
 
-The workflow in `.github/workflows/nextjs.yml` builds and deploys `out/` when changes are pushed to `main`. It can also be run manually from the Actions tab.
+The production domain is **christiquis.pw**:
 
-In the repository’s **Settings → Pages**, select **GitHub Actions** as the build and deployment source. Export and image settings are maintained directly in `next.config.mjs`; the Configure Pages action does not rewrite that file.
+- `/` — Chris’s portfolio, served by the `chris-portfolio` Worker.
+- `/tools/` — BST Tools, served by a separate `bst-tools` Worker through a service binding.
+- `/tools/json-formatter/` — an example individual tool route.
 
-This repository is a user site, served at `https://christiantiquis.github.io` with no repository-name path prefix. If moving it to another repository or domain, review asset paths, canonical URL, and social metadata.
+`.github/workflows/cloudflare.yml` validates the portfolio, checks the Worker bundle, and deploys on pushes to `main`. Pull requests only run validation. The toolkit has its own workflow and validation gates; its source is not copied into this repository.
+
+**First deployment:** configure Cloudflare and GitHub secrets, deploy the toolkit service, then deploy this portfolio. See [DEPLOYMENT.md](DEPLOYMENT.md) for setup, local integrated previews, and rollback instructions. Deployment requires account credentials; a local build does not publish anything.
+
+The old GitHub Pages workflow is now manual-only and does not include the toolkit.
 
 ## Repository About details
 
@@ -72,7 +81,7 @@ GitHub’s repository **About** sidebar is separate from this README and the web
 Suggested repository details:
 
 - **Description:** Chris Tiquis’s personal portfolio — full-stack software engineer. Built with Next.js and React, featuring BST branding.
-- **Website:** `https://christiantiquis.github.io`
+- **Website:** `https://christiquis.pw`
 - **Topics:** `portfolio`, `personal-website`, `nextjs`, `react`, `tailwindcss`, `github-pages`
 
 Set these through the gear icon beside **About** on the repository homepage, or with GitHub CLI/API access. They only need updating when the repository’s purpose, site URL, or technologies change.

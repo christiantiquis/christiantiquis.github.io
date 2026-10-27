@@ -1,0 +1,64 @@
+name: Deploy portfolio to Cloudflare
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cloudflare-portfolio-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: https://christiquis.pw
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test:cloudflare
+      - run: npm run build
+      - name: Validate Worker bundle without deploying
+        uses: cloudflare/wrangler-action@v3
+        with:
+          wranglerVersion: '4.153.0'
+          command: deploy --dry-run
+      - uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-static-export
+          path: out/
+          retention-days: 7
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://christiquis.pw
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: portfolio-static-export
+          path: out/
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Deploy portfolio and tools gateway
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4.153.0'
+          command: deploy
+      - name: Verify deployed portfolio, tools, assets, and 404s
+        env:
+          SMOKE_URL: https://christiquis.pw
+        run: node scripts/smoke-cloudflare.mjs

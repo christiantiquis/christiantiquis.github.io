@@ -16,7 +16,7 @@ export default function Home() {
           <Image className="brand-logo" src="/BST.jpg" alt="BST" width={999} height={1009} unoptimized />
         </a>
         <nav aria-label="Main navigation">
-          <a href="#about">About</a><a href="#stack">Stack</a><a href="#work">Work</a>
+          <a href="#about">About</a><a href="#stack">Stack</a><a href="#work">Work</a><a href="/tools/">Tools</a>
           <a className="nav-contact" href="#contact">Let&apos;s connect <span aria-hidden="true">↗</span></a>
         </nav>
       </header>
@@ -52,7 +52,7 @@ export default function Home() {
         </section>
         <section className="section work-section container" id="work" aria-labelledby="work-title">
           <p className="eyebrow">03 / Selected work</p>
-          <div className="work-panel"><div><span className="small-label">IN THE WORKS</span><h2 id="work-title">More to share soon.</h2><p>I&apos;m preparing new public repositories to showcase my work. Project details, source code, and demos will appear here as they&apos;re ready.</p><a className="text-link" href="https://github.com/christiantiquis">Visit my GitHub <span aria-hidden="true">↗</span></a></div><span className="work-symbol" aria-hidden="true">{'{ }'}</span></div>
+          <div className="work-panel"><div><span className="small-label">BST / BROWSER TOOLKIT</span><h2 id="work-title">Small tools. Useful every day.</h2><p>BST Tools is my collection of 13 browser-based utilities for text, code, JSON, and design. Format JSON, compare text, convert CSV, and more. Processing stays on your device.</p><a className="button button-primary" href="/tools/">Explore BST Tools <span aria-hidden="true">↗</span></a></div><span className="work-symbol" aria-hidden="true">{'{ }'}</span></div>
         </section>
         <section className="contact-section container" id="contact" aria-labelledby="contact-title"><p className="eyebrow">04 / Get in touch</p><h2 id="contact-title">Let&apos;s build<br /><span>something together.</span></h2><p>Have a full-stack opportunity or want to connect? I&apos;d love to hear from you.</p><a className="button button-primary" href="https://www.linkedin.com/in/christiantiquis/">Say hello on LinkedIn <span aria-hidden="true">↗</span></a></section>
       </main>
