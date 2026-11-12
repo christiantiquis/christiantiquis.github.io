@@ -7,6 +7,33 @@ const skills = [
   { number: '03', title: 'Data & delivery', description: 'From development to deployment.', tools: ['PostgreSQL', 'MySQL', 'JUnit', 'Mockito', 'Postman', 'Git', 'Jenkins', 'Azure'] },
 ];
 
+const work = [
+  {
+    label: 'BST / BROWSER TOOLKIT',
+    title: 'Small tools. Useful every day.',
+    description: 'BST Tools is my collection of 13 browser-based utilities for text, code, JSON, and design. Format JSON, compare text, convert CSV, and more. Processing stays on your device.',
+    href: '/tools/',
+    cta: 'Explore BST Tools',
+    symbol: '{ }',
+  },
+  {
+    label: 'TODOLIZT / TASK MANAGER',
+    title: 'Your tasks, a little clearer.',
+    description: 'TodoLizt is a personal task manager for planning the day, custom lists, due dates, notes, and priorities. Tasks stay in the browser, with exportable backups and a 30-day trash.',
+    href: 'https://christiantiquis.github.io/todo-list-react/',
+    cta: 'Open TodoLizt',
+    symbol: '[ ]',
+  },
+  {
+    label: 'ICHON / LOGO WORKSHOP',
+    title: 'A mark, made from icons.',
+    description: 'Ichon is a browser workshop for logos. Search thousands of icons, combine them with shapes and type, then export SVG or PNG. Editing stays on your device.',
+    href: 'https://github.com/christiantiquis/ichon',
+    cta: 'View Ichon',
+    symbol: '◇',
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -51,8 +78,23 @@ export default function Home() {
           <div className="skills-grid">{skills.map((skill) => <article className="skill" key={skill.title}><span className="skill-number">{skill.number}</span><h3>{skill.title}</h3><p>{skill.description}</p><ul className="tags">{skill.tools.map((tool) => <li key={tool}>{tool}</li>)}</ul></article>)}</div>
         </section>
         <section className="section work-section container" id="work" aria-labelledby="work-title">
-          <p className="eyebrow">03 / Selected work</p>
-          <div className="work-panel"><div><span className="small-label">BST / BROWSER TOOLKIT</span><h2 id="work-title">Small tools. Useful every day.</h2><p>BST Tools is my collection of 13 browser-based utilities for text, code, JSON, and design. Format JSON, compare text, convert CSV, and more. Processing stays on your device.</p><a className="button button-primary" href="/tools/">Explore BST Tools <span aria-hidden="true">↗</span></a></div><span className="work-symbol" aria-hidden="true">{'{ }'}</span></div>
+          <div className="section-heading">
+            <div><p className="eyebrow">03 / Selected work</p><h2 id="work-title">Projects I keep using.</h2></div>
+            <p>Browser tools I built for everyday work.</p>
+          </div>
+          <div className="work-list">
+            {work.map((project) => (
+              <article className="work-panel" key={project.title}>
+                <div>
+                  <span className="small-label">{project.label}</span>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <a className="button button-primary" href={project.href}>{project.cta} <span aria-hidden="true">↗</span></a>
+                </div>
+                <span className="work-symbol" aria-hidden="true">{project.symbol}</span>
+              </article>
+            ))}
+          </div>
         </section>
         <section className="contact-section container" id="contact" aria-labelledby="contact-title"><p className="eyebrow">04 / Get in touch</p><h2 id="contact-title">Let&apos;s build<br /><span>something together.</span></h2><p>Have a full-stack opportunity or want to connect? I&apos;d love to hear from you.</p><a className="button button-primary" href="https://www.linkedin.com/in/christiantiquis/">Say hello on LinkedIn <span aria-hidden="true">↗</span></a></section>
       </main>
