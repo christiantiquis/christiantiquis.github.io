@@ -12,7 +12,7 @@ Personal portfolio of **Christian (Chris) Tiquis**, a software engineer and full
 - A pause/resume control, reduced-motion support, and animation that pauses offscreen or in hidden tabs.
 - Page metadata and a static export for GitHub Pages.
 
-The Work section features **BST Tools**, a separate browser-only toolkit served under [/tools/](https://christiquis.pw/tools/). Chris is the person behind both sites; BST is the shared personal/product brand.
+The Work section features **BST Tools**, a separate browser-only toolkit served under [/tools/](https://christiquis.pw/tools/), and **TodoLizt**, a local-first task manager. Chris is the person behind both sites; BST is the shared personal/product brand.
 
 ## Stack
 
@@ -55,6 +55,7 @@ Alternatively, run `docker compose up --build` and open [localhost:3000](http://
 - `src/app/globals.css` — colors, typography, responsive layout, logo framing, and reduced-motion styles.
 - `src/app/layout.js` — page title, description, social metadata, and favicon.
 - `public/BST.jpg` — BST logo, framed by CSS in the header.
+- `public/work/` — screenshots shown on the selected-work cards.
 - `cloudflare/worker.mjs` — routes `/tools/*` through the toolkit service binding.
 - `wrangler.json` — Cloudflare Worker, asset, custom-domain, and service-binding configuration.
 - `next.config.mjs` — static export, unoptimized images, and development build directory.

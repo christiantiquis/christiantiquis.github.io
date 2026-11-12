@@ -265,6 +265,17 @@ h2 {
   line-height: 1.9;
   margin: 0 0 20px;
 }
+.about-copy .now {
+  color: var(--foreground);
+}
+.now-label {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
 .about-copy .availability {
   color: var(--accent);
   font-size: 13px;
@@ -320,15 +331,54 @@ h3 {
   font-size: 11px;
   background: #ffffff03;
 }
+.stack-tags {
+  margin-top: 8px;
+}
+.stack-tags li {
+  font-size: 13px;
+  padding: 10px 12px;
+}
+.work-list {
+  display: grid;
+  gap: 24px;
+}
 .work-panel {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
   align-items: center;
-  gap: 30px;
+  gap: 36px;
   background: #101a20;
   border: 1px solid #ffffff10;
-  padding: 45px;
+  padding: 36px;
   border-radius: 6px;
+}
+.work-panel h3 {
+  font-size: clamp(26px, 3vw, 34px);
+  line-height: 1.2;
+  letter-spacing: -1px;
+  margin: 0;
+}
+.work-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 28px;
+}
+.work-shot {
+  margin: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #ffffff14;
+  background: #0b1015;
+  min-width: 0;
+}
+.work-shot img {
+  display: block;
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  object-position: top center;
 }
 .small-label {
   font: 10px monospace;
@@ -337,20 +387,12 @@ h3 {
   display: block;
   margin-bottom: 18px;
 }
-.work-panel h2 {
-  font-size: 34px;
-}
 .work-panel p {
   color: var(--muted);
   font-size: 15px;
   line-height: 1.8;
   max-width: 580px;
-  margin: 20px 0 25px;
-}
-.work-symbol {
-  color: #9cf3d025;
-  font: 100px monospace;
-  white-space: nowrap;
+  margin: 16px 0 20px;
 }
 .contact-section {
   text-align: center;
@@ -371,6 +413,9 @@ h3 {
   line-height: 1.8;
   margin: 25px auto 30px;
   max-width: 430px;
+}
+.contact-actions {
+  justify-content: center;
 }
 .site-footer {
   border-top: 1px solid #ffffff15;
@@ -421,8 +466,8 @@ h3 {
   .hero-actions {
     gap: 20px;
   }
-  .work-symbol {
-    font-size: 70px;
+  .work-shot img {
+    height: 220px;
   }
 }
 @media(max-width: 720px) {
@@ -486,13 +531,12 @@ nav {
     gap: 35px;
   }
   .work-panel {
+    grid-template-columns: 1fr;
     padding: 26px;
+    gap: 24px;
   }
-  .work-symbol {
-    display: none;
-  }
-  .work-panel h2 {
-    font-size: 30px;
+  .work-shot img {
+    height: 200px;
   }
   .contact-section {
     padding-block: 30px 65px;

@@ -1,10 +1,30 @@
 import Image from "next/image";
 import Particles from "./components/Particles/Particles";
 
-const skills = [
-  { number: '01', title: 'Frontend', description: 'Interfaces for the web.', tools: ['TypeScript', 'JavaScript', 'React', 'Angular', 'HTML & CSS', 'Tailwind CSS', 'MUI'] },
-  { number: '02', title: 'Backend', description: 'The systems behind the screen.', tools: ['Java', 'Spring Boot', 'Spring MVC', 'Node.js', 'Express', 'REST APIs'] },
-  { number: '03', title: 'Data & delivery', description: 'From development to deployment.', tools: ['PostgreSQL', 'MySQL', 'JUnit', 'Mockito', 'Postman', 'Git', 'Jenkins', 'Azure'] },
+const dayToDay = ["TypeScript", "React", "Next.js", "Java", "Spring Boot", "Python"];
+
+const projects = [
+  {
+    kicker: "BST / BROWSER TOOLKIT",
+    title: "Everyday utilities. Nothing leaves the browser.",
+    body: "Search tools for text, code, JSON, and design. This site routes /tools/ to a separate Cloudflare Worker, and every tool processes data on the device.",
+    tools: ["TypeScript", "Next.js", "React"],
+    href: "/tools/",
+    cta: "Open BST Tools",
+    image: "/work/bst-tools.png",
+    alt: "BST Tools, a directory of browser utilities for text, JSON, and code",
+  },
+  {
+    kicker: "TODOLIZT",
+    title: "A task list that survives a second tab.",
+    body: "Tasks stay in the browser. A backup can be previewed before it is imported, Trash keeps deleted tasks for 30 days, and a stale tab cannot overwrite a newer edit.",
+    tools: ["TypeScript", "Next.js", "React"],
+    href: "https://christiantiquis.github.io/todo-list-react/",
+    source: "https://github.com/christiantiquis/todo-list-react",
+    cta: "Open TodoLizt",
+    image: "/work/todolizt.png",
+    alt: "TodoLizt, a daily task list saved in the browser",
+  },
 ];
 
 export default function Home() {
@@ -27,36 +47,63 @@ export default function Home() {
           <div className="hero-copy">
             <p className="eyebrow"><span className="status-dot" /> Open to remote opportunities</p>
             <h1 id="hero-title">Hello, I&apos;m <span className="hero-name">Chris.</span><br /><span>I build for<br className="desktop-break" /> the web.</span></h1>
-            <p className="hero-description">Software engineer & full-stack developer working across TypeScript, React, Java, and Spring Boot.</p>
-            <div className="hero-actions"><a className="button button-primary" href="https://www.linkedin.com/in/christiantiquis/">Connect on LinkedIn <span aria-hidden="true">↗</span></a><a className="text-link" href="https://github.com/christiantiquis">Explore my GitHub <span aria-hidden="true">↗</span></a></div>
+            <p className="hero-description">Software engineer building small web tools with TypeScript and React. I prefer software that stays on your machine when it can.</p>
+            <div className="hero-actions"><a className="button button-primary" href="#work">See selected work</a><a className="text-link" href="https://www.linkedin.com/in/christiantiquis/">Connect on LinkedIn <span aria-hidden="true">↗</span></a></div>
           </div>
           <div className="hero-visual" aria-hidden="true">
             <div className="orbit orbit-one" /><div className="orbit orbit-two" />
             <div className="code-window">
               <div className="window-bar"><span /><span /><span /><span className="window-label">a little about me</span></div>
-              <pre><code><span className="code-muted">{"// Always curious. Always building."}</span>{'\n\n'}<span className="code-purple">const</span> developer = {'{\n'}{'  '}name: <span className="code-green">&quot;Chris Tiquis&quot;</span>,{'\n'}{'  '}focus: <span className="code-green">&quot;Full-stack development&quot;</span>,{'\n'}{'  '}interests: [{'\n'}{'    '}<span className="code-green">&quot;AI & machine learning&quot;</span>,{'\n'}{'    '}<span className="code-green">&quot;Automation&quot;</span>{'\n'}{'  '}],{'\n'}{'};'}</code></pre>
+              <pre><code><span className="code-muted">{"// Small tools. On your machine."}</span>{'\n\n'}<span className="code-purple">const</span> developer = {'{\n'}{'  '}name: <span className="code-green">&quot;Chris Tiquis&quot;</span>,{'\n'}{'  '}focus: <span className="code-green">&quot;Web tools&quot;</span>,{'\n'}{'  '}prefers: <span className="code-green">&quot;Local-first when it can&quot;</span>,{'\n'}{'};'}</code></pre>
               <div className="window-footer"><span className="status-dot" /> Learning never stops.</div>
             </div>
-            <span className="visual-caption">FRONTEND / BACKEND / EVERYTHING BETWEEN</span>
+            <span className="visual-caption">SMALL TOOLS / ON YOUR MACHINE</span>
           </div>
           <a className="scroll-cue" href="#about"><span aria-hidden="true">↓</span> A little more about me</a>
         </section>
         </div>
         <section className="about-section section container" id="about" aria-labelledby="about-title">
-          <div><p className="eyebrow">01 / About</p><h2 id="about-title">Curiosity drives<br />what I build.</h2></div>
-          <div className="about-copy"><p>I&apos;m Christian Tiquis, a software engineer and full-stack developer interested in how interfaces, services, and data come together.</p><p>My core stack spans TypeScript and React on the frontend, with Java and Spring Boot on the backend. Beyond web development, I&apos;m interested in AI, machine learning, and automation with Python and scripting.</p><p className="availability">Currently open to remote full-stack developer opportunities.</p></div>
+          <div><p className="eyebrow">01 / About</p><h2 id="about-title">Small tools,<br />used for real.</h2></div>
+          <div className="about-copy">
+            <p>I&apos;m Christian Tiquis. I build utilities I actually open, and I prefer work that stays on your machine when it can.</p>
+            <p className="now"><span className="now-label">Now</span> Extending BST Tools, and keeping TodoLizt in daily use.</p>
+            <p className="availability">Currently open to remote full-stack developer opportunities.</p>
+          </div>
         </section>
         <section className="section stack-section container" id="stack" aria-labelledby="stack-title">
-          <div className="section-heading"><div><p className="eyebrow">02 / Toolkit</p><h2 id="stack-title">Across the stack.</h2></div><p>The technologies and tools I work with.</p></div>
-          <div className="skills-grid">{skills.map((skill) => <article className="skill" key={skill.title}><span className="skill-number">{skill.number}</span><h3>{skill.title}</h3><p>{skill.description}</p><ul className="tags">{skill.tools.map((tool) => <li key={tool}>{tool}</li>)}</ul></article>)}</div>
+          <div className="section-heading">
+            <div><p className="eyebrow">02 / Toolkit</p><h2 id="stack-title">Day to day.</h2></div>
+            <p>TypeScript, React, and Next.js for the work below. Java and Spring Boot when the work is on the server. Python for small scripts.</p>
+          </div>
+          <ul className="tags stack-tags">{dayToDay.map((tool) => <li key={tool}>{tool}</li>)}</ul>
         </section>
         <section className="section work-section container" id="work" aria-labelledby="work-title">
-          <p className="eyebrow">03 / Selected work</p>
-          <div className="work-panel"><div><span className="small-label">BST / BROWSER TOOLKIT</span><h2 id="work-title">Small tools. Useful every day.</h2><p>BST Tools is my collection of 13 browser-based utilities for text, code, JSON, and design. Format JSON, compare text, convert CSV, and more. Processing stays on your device.</p><a className="button button-primary" href="/tools/">Explore BST Tools <span aria-hidden="true">↗</span></a></div><span className="work-symbol" aria-hidden="true">{'{ }'}</span></div>
+          <div className="section-heading">
+            <div><p className="eyebrow">03 / Selected work</p><h2 id="work-title">Two things I ship and use.</h2></div>
+          </div>
+          <div className="work-list">
+            {projects.map((project) => (
+              <article className="work-panel" key={project.kicker}>
+                <div>
+                  <span className="small-label">{project.kicker}</span>
+                  <h3>{project.title}</h3>
+                  <p>{project.body}</p>
+                  <ul className="tags">{project.tools.map((tool) => <li key={tool}>{tool}</li>)}</ul>
+                  <div className="work-actions">
+                    <a className="button button-primary" href={project.href}>{project.cta} <span aria-hidden="true">↗</span></a>
+                    {project.source ? <a className="text-link" href={project.source}>Source <span aria-hidden="true">↗</span></a> : null}
+                  </div>
+                </div>
+                <figure className="work-shot">
+                  <Image src={project.image} alt={project.alt} width={1440} height={900} />
+                </figure>
+              </article>
+            ))}
+          </div>
         </section>
-        <section className="contact-section container" id="contact" aria-labelledby="contact-title"><p className="eyebrow">04 / Get in touch</p><h2 id="contact-title">Let&apos;s build<br /><span>something together.</span></h2><p>Have a full-stack opportunity or want to connect? I&apos;d love to hear from you.</p><a className="button button-primary" href="https://www.linkedin.com/in/christiantiquis/">Say hello on LinkedIn <span aria-hidden="true">↗</span></a></section>
+        <section className="contact-section container" id="contact" aria-labelledby="contact-title"><p className="eyebrow">04 / Get in touch</p><h2 id="contact-title">Let&apos;s build<br /><span>something together.</span></h2><p>Have a full-stack opportunity or want to connect? Email me, or say hello on LinkedIn.</p><div className="hero-actions contact-actions"><a className="button button-primary" href="mailto:christian.tiquis@gmail.com">Email Chris</a><a className="text-link" href="https://www.linkedin.com/in/christiantiquis/">Say hello on LinkedIn <span aria-hidden="true">↗</span></a></div></section>
       </main>
-      <footer className="site-footer container"><p>Christian Tiquis <span> / Software Engineer</span></p><div><a href="https://github.com/christiantiquis">GitHub ↗</a><a href="https://www.linkedin.com/in/christiantiquis/">LinkedIn ↗</a><a href="#">Back to top ↑</a></div></footer>
+      <footer className="site-footer container"><p>Christian Tiquis <span> / Software Engineer</span></p><div><a href="https://github.com/christiantiquis">GitHub ↗</a><a href="https://www.linkedin.com/in/christiantiquis/">LinkedIn ↗</a><a href="mailto:christian.tiquis@gmail.com">Email</a><a href="#">Back to top ↑</a></div></footer>
     </>
   );
 }
