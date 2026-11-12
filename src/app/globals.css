@@ -320,45 +320,60 @@ h3 {
   font-size: 11px;
   background: #ffffff03;
 }
+.work-section {
+  padding-block: 56px;
+}
+.work-section .section-heading {
+  margin-bottom: 20px;
+}
 .work-list {
   display: grid;
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  align-items: stretch;
 }
 .work-panel {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
+  flex-direction: column;
+  align-items: flex-start;
   background: #101a20;
   border: 1px solid #ffffff10;
-  padding: 45px;
+  padding: 22px;
   border-radius: 6px;
+}
+.work-panel > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+}
+.work-panel .button {
+  margin-top: auto;
+  padding: 11px 14px;
+  gap: 12px;
 }
 .small-label {
   font: 10px monospace;
   letter-spacing: 2px;
   color: var(--accent);
   display: block;
-  margin-bottom: 18px;
+  margin-bottom: 8px;
 }
 .work-panel h3 {
-  font-size: 34px;
+  font-size: 24px;
   font-weight: 500;
-  letter-spacing: -1.2px;
-  line-height: 1.15;
+  letter-spacing: -0.6px;
+  line-height: 1.2;
   margin: 0;
 }
 .work-panel p {
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.8;
-  max-width: 580px;
-  margin: 20px 0 25px;
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 8px 0 16px;
 }
 .work-symbol {
-  color: #9cf3d025;
-  font: 100px monospace;
-  white-space: nowrap;
+  display: none;
 }
 .contact-section {
   text-align: center;
@@ -429,8 +444,8 @@ h3 {
   .hero-actions {
     gap: 20px;
   }
-  .work-symbol {
-    font-size: 70px;
+  .work-list {
+    grid-template-columns: 1fr;
   }
 }
 @media(max-width: 720px) {
@@ -487,20 +502,20 @@ nav {
     display: block;
   }
   .section-heading > p {
-    margin-top: 20px;
+    margin-top: 12px;
   }
   .skills-grid {
     grid-template-columns: 1fr;
     gap: 35px;
   }
   .work-panel {
-    padding: 26px;
+    padding: 18px;
   }
   .work-symbol {
     display: none;
   }
   .work-panel h3 {
-    font-size: 30px;
+    font-size: 22px;
   }
   .contact-section {
     padding-block: 30px 65px;
