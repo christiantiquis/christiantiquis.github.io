@@ -320,6 +320,10 @@ h3 {
   font-size: 11px;
   background: #ffffff03;
 }
+.work-list {
+  display: grid;
+  gap: 16px;
+}
 .work-panel {
   display: flex;
   justify-content: space-between;
@@ -337,8 +341,12 @@ h3 {
   display: block;
   margin-bottom: 18px;
 }
-.work-panel h2 {
+.work-panel h3 {
   font-size: 34px;
+  font-weight: 500;
+  letter-spacing: -1.2px;
+  line-height: 1.15;
+  margin: 0;
 }
 .work-panel p {
   color: var(--muted);
@@ -491,7 +499,7 @@ nav {
   .work-symbol {
     display: none;
   }
-  .work-panel h2 {
+  .work-panel h3 {
     font-size: 30px;
   }
   .contact-section {
