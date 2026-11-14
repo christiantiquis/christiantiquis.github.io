@@ -35,6 +35,7 @@ Open [localhost:3000](http://localhost:3000). Next.js prints another port if 300
 npm run lint
 npm run test:cloudflare
 npm run build
+npm run test:export
 ```
 
 The production build exports static files to `out/`. No Node.js server is required to host them. Development files use `.next/dev`; production build files use `.next`.
@@ -55,9 +56,20 @@ Alternatively, run `docker compose up --build` and open [localhost:3000](http://
 - `src/app/globals.css` — colors, typography, responsive layout, logo framing, and reduced-motion styles.
 - `src/app/layout.js` — page title, description, social metadata, and favicon.
 - `public/BST.jpg` — BST logo, framed by CSS in the header.
+- `public/brand/` — responsive WebP logo variants generated from `BST.jpg` by `npm run build:images` (also run before production builds).
 - `cloudflare/worker.mjs` — routes `/tools/*` through the toolkit service binding.
 - `wrangler.json` — Cloudflare Worker, asset, custom-domain, and service-binding configuration.
 - `next.config.mjs` — static export, unoptimized images, and development build directory.
+
+## Mobile performance
+
+The [November 14, 2026 PageSpeed report](https://pagespeed.web.dev/analysis/https-christiquis-pw/wq5aqado9h?form_factor=mobile) scored mobile performance at 96, with accessibility, best practices, and SEO at 100. It reported 1.8s FCP, 1.8s LCP, 4.1s Speed Index, an oversized header logo (about 67 KiB of potential savings), and about 160ms of render-blocking CSS delay.
+
+The header now uses pre-generated 150/300/450px WebP images (1.3–3.8 KiB instead of the 70 KiB original), with responsive sizes and eager loading. A native image also avoids shipping the Next.js image component for this static asset. The original JPEG stays as the source for regeneration.
+
+The small stylesheet is included in the HTML using Next.js `experimental.inlineCss`, eliminating its blocking network request. This experimental option trades separate stylesheet caching for faster first visits on this single-page portfolio; check the exported HTML and browser rendering when upgrading Next.js. `npm run test:export`, run after the build and in Cloudflare CI, guards CSS delivery and the responsive image size budget.
+
+Framework JavaScript and the Cloudflare-managed analytics beacon still appear in Lighthouse diagnostics. The beacon's cache lifetime and polyfills are controlled by Cloudflare. Local measurements do not establish production PageSpeed results; re-run the linked report after merging and deploying.
 
 Profile content was adapted from the README in the [christiantiquis profile repository](https://github.com/christiantiquis/christiantiquis). The two repositories do not sync automatically; update both when your stack, availability, or project details change.
 

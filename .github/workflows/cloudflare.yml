@@ -25,6 +25,7 @@ jobs:
       - run: npm run lint
       - run: npm run test:cloudflare
       - run: npm run build
+      - run: npm run test:export
       - name: Validate Worker bundle without deploying
         uses: cloudflare/wrangler-action@v3
         with:
