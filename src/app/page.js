@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Particles from "./components/Particles/Particles";
 
 const skills = [
@@ -40,7 +39,9 @@ export default function Home() {
       <a className="skip-link" href="#main">Skip to content</a>
       <header className="brand-header">
         <a className="brand-home" href="#" aria-label="Chris — BST home">
-          <Image className="brand-logo-image" src="/BST.jpg" alt="BST" width={999} height={1009} unoptimized />
+          {/* Pre-generated variants work on static hosting without an image server. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="brand-logo-image" src="/brand/bst-300.webp" srcSet="/brand/bst-150.webp 150w, /brand/bst-300.webp 300w, /brand/bst-450.webp 450w" sizes="(max-width: 720px) 121px, 150px" alt="BST" width={999} height={1009} decoding="async" />
         </a>
         <nav className="brand-nav" aria-label="Main navigation">
           <a href="#about">About</a><a href="#stack">Stack</a><a href="#work">Work</a><a href="/tools/">Tools</a>
